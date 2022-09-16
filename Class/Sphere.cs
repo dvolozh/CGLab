@@ -27,7 +27,7 @@ namespace CGLab.Class
             var c = Vector.DotProd(Point.ToVector(n), Point.ToVector(n)) - this.radius * this.radius;
             var disc = b * b - 4 * a * c;
 
-            if (disc < 0) return 0;
+            if (disc < 0) return double.NaN;
 
             var t0 = (-b - Math.Sqrt(disc)) / (2 * a);
             var t1 = (-b + Math.Sqrt(disc)) / (2 * a);
@@ -42,7 +42,7 @@ namespace CGLab.Class
             }
             else if (t0 > 0) return t0;
             else if (t1 > 0) return t1;
-            else return 0;
+            else return double.NaN;
         }
 
         public Vector GetNormal(Point p)

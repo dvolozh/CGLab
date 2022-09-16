@@ -22,7 +22,7 @@ namespace CGLab.Class
             double denom = Vector.DotProd(r.direction, normal);
             if (Math.Abs(denom) <= 0.0001f)
             {
-                return 0;
+                return double.NaN;
             }
             double t = Vector.DotProd(Point.ToVector(center - r.origin), normal) / denom;
             if (t > 0)
@@ -31,7 +31,7 @@ namespace CGLab.Class
             }
             else
             {
-                return 0;
+                return double.NaN;
             }
         }
 

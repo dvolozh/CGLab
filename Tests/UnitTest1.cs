@@ -55,12 +55,32 @@ namespace Tests
         }
 
         [TestMethod]
-        public void TestGetSphereNormal()
+        public void TestSphereGetNormal()
         {
             Sphere sphere = new Sphere(new Point(0, 3, 0), 1);
             Point p = new Point(0, 2, 0);
             Point expect = new Point(0, -1, 0);
             var result = sphere.GetNormal(p);
+            Assert.AreEqual((expect.x, expect.y, expect.z), (result.x, result.y, result.z));
+        }
+
+        [TestMethod]
+        public void TestTriangleIntersection()
+        {
+            Triangle triangle = new Triangle(new Point(0, 0, 0), new Point(0, 0, 1), new Point(1, 0, 0));
+            Ray ray = new Ray(new Point(0.5, -2, 0), new Vector(0, 1, 0));
+            var expect = 2;
+            var result = triangle.Intersection(ray);
+            Assert.AreEqual(expect, result);
+        }
+
+        [TestMethod]
+        public void TestTriangleGetNormal()
+        {
+            Triangle triangle = new Triangle(new Point(0, 0, 0), new Point(0, 0, 1), new Point(1, 0, 0));
+            Point p = new Point(0, 2, 0);
+            Point expect = new Point(0, 1, 0);
+            var result = triangle.GetNormal(p);
             Assert.AreEqual((expect.x, expect.y, expect.z), (result.x, result.y, result.z));
         }
     }
